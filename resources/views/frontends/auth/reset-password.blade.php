@@ -47,7 +47,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-
                             </div>
 
                             <button class="btn btn-success w-100 mt-4">Reset Password</button>
