@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/* sementara */
+/* body {
+    margin-bottom: 500px;
+} */
+
+* {
+    font-family: dm sans;
+}
+
+/* navbar */
+.navbar .navbar-brand img {
+    width: 120px;
+}
+
+.navbar .navbar-nav {
+    margin-left: auto;
+}
+
+.navbar .navbar-nav .nav-link {
+    margin-right: 20px;
+}
+
+.navbar .navbar-nav .btn {
+    width: 120px;
+}
+
+/* navbar */
+
+/* hero */
+#hero {
+    background-image: url(./Assets/Gambar1.jpg);
+    background-size: cover;
+    height: 600px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+#hero .konten-hero h1 {
+    font-size: 60px;
+}
+
+/* hero */
+
+/* produk */
+#produk {
+    margin-top: 100px;
+}
+
+#produk .more {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+
+#produk .card-produk {
+    text-decoration: none;
+    border: none;
+}
+
+#produk .card-produk .foto-produk {
+    height: 350px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+/* cta */
+#cta {
+    margin-top: 100px;
+    color: white;
+}
+
+#cta .bg-cta {
+    background-image: url(./Assets/Banner.jpg);
+    background-size: cover;
+    height: 500px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cta h1 {
+    font-size: 50px;
+}
+
+/* cta */
+
+/* Login */
+#login .bg-login {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 40%;
+    border-radius: 20px;
+    background-image: url(./assets/Login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.204);
+}
+
+#login .custom-width {
+    width: 400px;
+}
+
+#login form label {
+    padding-top: 10px;
+}
+
+#login img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+/* Login */
+
+/* register */
+#register .bg-register {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    border-radius: 20px;
+    background-image: url(./assets/Register.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.204);
+}
+
+#register form label {
+    padding-top: 10px;
+}
+
+#register img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+/* Register */
+
+/* detail produk */
+#detail {
+    margin-top: 100px;
+}
+
+#detail .foto-produk {
+    height: 350px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+/* detail produk */
+
+/* keranjang */
+#keranjang {
+    margin-top: 100px;
+}
+
+#keranjang .foto-produk {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* keranjang */
+
+/* order */
+#order {
+    margin-top: 100px;
+}
+
+#order .foto-produk {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* order */
+
+/* payment */
+#payment {
+    margin-top: 100px;
+}
+
+#payment img {
+    width: 30%;
+}
+
+/* payment */
+
+/* success */
+#success {
+    margin-top: 100px;
+}
+
+#success img {
+    width: 50%;
+}
+
+/* success */
+
+/* footer */
+footer {
+    margin-top: 100px;
+    text-align: center;
+}
+
+/* footer */
+
+
+/* mobile style */
+@media (max-width: 768px) {
+
+    /* navbar */
+    .navbar .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar .navbar-nav .btn {
+        width: 120px;
+        margin: auto;
+    }
+
+    .navbar .navbar-nav .dropdown {
+        margin-left: 0;
+    }
+
+    .navbar .navbar-nav .vr {
+        display: none;
+    }
+
+    /* navbar */
+
+    /* Login */
+    #login .bg-login {
+        width: 100%;
+    }
+
+    #login .custom-width {
+        width: 100%;
+    }
+    /* Login */
+
+    /* Register */
+    #register .bg-register {
+        width: 100%;
+    }
+    /* Register */
+}
