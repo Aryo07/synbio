@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backends\BankController;
 use App\Http\Controllers\Frontends\HomeController;
 use App\Http\Controllers\Backends\BannerController;
-use App\Http\Controllers\Backends\DashboardController;
 use App\Http\Controllers\Backends\ProductController;
+use App\Http\Controllers\Backends\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,6 +55,22 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         ->name('admin.products.update');
     Route::delete('/products/{product}', action: [ProductController::class, 'destroy'])
         ->name('admin.products.destroy');
+
+        // Bank Route
+    // Route::resource('banks', BankController::class);
+    // Route::resource('banks', BankController::class)->except(['show']);
+    Route::get('/banks', action: [BankController::class, 'index'])
+        ->name('admin.banks.index');
+    Route::get('/banks/create', action: [BankController::class, 'create'])
+        ->name('admin.banks.create');
+    Route::post('/banks', action: [BankController::class, 'store'])
+        ->name('admin.banks.store');
+    Route::get('/banks/{bank}/edit', action: [BankController::class, 'edit'])
+        ->name('admin.banks.edit');
+    Route::put('/banks/{bank}', action: [BankController::class, 'update'])
+        ->name('admin.banks.update');
+    Route::delete('/banks/{bank}', action: [BankController::class, 'destroy'])
+        ->name('admin.banks.destroy');
 });
 
 require __DIR__ . '/auth-admin.php';

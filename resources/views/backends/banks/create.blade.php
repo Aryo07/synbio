@@ -1,4 +1,4 @@
-@extends('backends.layouts.app', ['title' => 'Tambah Banners'])
+@extends('backends.layouts.app', ['title' => 'Tambah Banks'])
 
 @section('content')
 <section id="basic-vertical-layouts">
@@ -6,21 +6,21 @@
         <div class="col-md-6 col-12">
             <div class="card border-0 shadow">
                 <div class="card-header border-0 bg-primary text-white">
-                    <h4 class="card-title m-0 font-weight-bold"><i class="bi bi-image"></i> TAMBAH BANNER</h4>
+                    <h4 class="card-title m-0 font-weight-bold"><i class="bi bi-bank"></i> TAMBAH BANK</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-vertical" method="POST" action="{{ route('admin.banners.store') }}" enctype="multipart/form-data">
+                        <form class="form form-vertical" method="POST" action="{{ route('admin.banks.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="title">Judul</label>
-                                            <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" placeholder="Tambah Judul">
+                                            <label for="bank_name">Nama Bank</label>
+                                            <input type="text" id="bank_name" name="bank_name" class="form-control @error('bank_name') is-invalid @enderror" value="{{ old('bank_name') }}" placeholder="Tambah Nama Bank">
 
-                                            @error('title')
+                                            @error('bank_name')
                                             <div class="invalid-feedback" role="alert">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -28,10 +28,11 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="subtitle">Subjudul</label>
-                                            <input type="text" id="subtitle" name="subtitle" class="form-control @error('subtitle') is-invalid @enderror" value="{{ old('subtitle') }}" placeholder="Tambah Subjudul">
+                                            <label for="account_number">Nomor Rekening</label>
+                                            <input type="text" id="account_number" name="account_number" class="form-control @error('account_number') is-invalid @enderror" value="{{ old('account_number') }}" placeholder="Tambah Nomor Rekening">
 
-                                            @error('subtitle')
+
+                                            @error('account_number')
                                             <div class="invalid-feedback" role="alert">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -39,10 +40,10 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="description" class="form-label">Deskirpsi</label>
-                                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Tambah Deskirpsi">{{ old('description') }}</textarea>
+                                            <label for="account_name">Nama Akun</label>
+                                            <input type="text" id="account_name" name="account_name" class="form-control @error('account_name') is-invalid @enderror" value="{{ old('account_name') }}" placeholder="Tambah Nama Akun">
 
-                                            @error('description')
+                                            @error('account_name')
                                             <div class="invalid-feedback" role="alert">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -60,24 +61,6 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="position">Posisi <p style="color: orange">*Posisi 1 Hero dan 2 Banner</p></label>
-                                            <input type="number" id="position" name="position" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') }}" placeholder="Input Posisi Foto" min="1" max="2">
-
-                                            @error('position')
-                                                <div class="invalid-feedback" role="alert">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" role="switch" id="status" name="status">
-                                            <label class="form-check-label" for="status">Geser untuk menampilkan.</label>
                                         </div>
                                     </div>
 

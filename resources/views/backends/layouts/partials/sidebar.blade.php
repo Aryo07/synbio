@@ -61,6 +61,15 @@
 
             </li>
 
+            <li class="sidebar-item {{ Route::is('admin.banks*') ? 'active' : '' }} ">
+                <a href="{{ route('admin.banks.index') }}" class='sidebar-link'>
+                    <i class="bi bi-bank"></i>
+                    <span>Bank</span>
+                </a>
+
+
+            </li>
+
 
         </ul>
 

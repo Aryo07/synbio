@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             // BannerSeeder::class,
             // ProductSeeder::class,
+            // BankSeeder::class,
         ]);
     }
 }
