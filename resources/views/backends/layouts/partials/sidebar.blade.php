@@ -34,7 +34,7 @@
         <ul class="menu">
             <li class="sidebar-title">Menu</li>
 
-            <li class="sidebar-item active ">
+            <li class="sidebar-item {{ Route::is('admin.dashboard*') ? 'active' : '' }} ">
                 <a href="{{ route('admin.dashboard') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
@@ -43,14 +43,24 @@
 
             </li>
 
-            <li class="sidebar-item ">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-table"></i>
-                    <span>Table</span>
+            <li class="sidebar-item {{ Route::is('admin.banners*') ? 'active' : '' }} ">
+                <a href="{{ route('admin.banners.index') }}" class='sidebar-link'>
+                    <i class="bi bi-image"></i>
+                    <span>Banner</span>
                 </a>
 
 
             </li>
+
+            <li class="sidebar-item {{ Route::is('admin.products*') ? 'active' : '' }} ">
+                <a href="{{ route('admin.products.index') }}" class='sidebar-link'>
+                    <i class="bi bi-box"></i>
+                    <span>Product</span>
+                </a>
+
+
+            </li>
+
 
         </ul>
 
