@@ -7,4 +7,6 @@ return [
 
     // Pagination
     Paginator::useBootstrap(),
+
+    Barryvdh\Debugbar\ServiceProvider::class,
 ];

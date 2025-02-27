@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backends\BankController;
+use App\Http\Controllers\Backends\UserController;
 use App\Http\Controllers\Frontends\HomeController;
 use App\Http\Controllers\Backends\BannerController;
+use App\Http\Controllers\Backends\CourierController;
 use App\Http\Controllers\Backends\ProductController;
 use App\Http\Controllers\Backends\DashboardController;
 
@@ -12,9 +14,9 @@ Route::get('/', function () {
 });
 
 // User Route
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/home', action: [HomeController::class, 'home'])
-    ->name('home');
+        ->name('home');
 });
 
 // Admin Route
@@ -56,7 +58,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::delete('/products/{product}', action: [ProductController::class, 'destroy'])
         ->name('admin.products.destroy');
 
-        // Bank Route
+    // Bank Route
     // Route::resource('banks', BankController::class);
     // Route::resource('banks', BankController::class)->except(['show']);
     Route::get('/banks', action: [BankController::class, 'index'])
@@ -71,6 +73,38 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         ->name('admin.banks.update');
     Route::delete('/banks/{bank}', action: [BankController::class, 'destroy'])
         ->name('admin.banks.destroy');
+
+    // Courier Route
+    // Route::resource('couriers', CourierController::class);
+    // Route::resource('couriers', CourierController::class)->except(['show']);
+    Route::get('/couriers', action: [CourierController::class, 'index'])
+        ->name('admin.couriers.index');
+    Route::get('/couriers/create', action: [CourierController::class, 'create'])
+        ->name('admin.couriers.create');
+    Route::post('/couriers', action: [CourierController::class, 'store'])
+        ->name('admin.couriers.store');
+    Route::get('/couriers/{courier}/edit', action: [CourierController::class, 'edit'])
+        ->name('admin.couriers.edit');
+    Route::put('/couriers/{courier}', action: [CourierController::class, 'update'])
+        ->name('admin.couriers.update');
+    Route::delete('/couriers/{courier}', action: [CourierController::class, 'destroy'])
+        ->name('admin.couriers.destroy');
+
+    // User Route
+    // Route::resource('users', UserController::class);
+    // Route::resource('users', UserController::class)->except(['show']);
+    Route::get('/users', action: [UserController::class, 'index'])
+        ->name('admin.users.index');
+    Route::get('/users/create', action: [UserController::class, 'create'])
+        ->name('admin.users.create');
+    Route::post('/users', action: [UserController::class, 'store'])
+        ->name('admin.users.store');
+    Route::get('/users/{user}/edit', action: [UserController::class, 'edit'])
+        ->name('admin.users.edit');
+    Route::put('/users/{user}', action: [UserController::class, 'update'])
+        ->name('admin.users.update');
+    Route::delete('/users/{user}', action: [UserController::class, 'destroy'])
+        ->name('admin.users.destroy');
 });
 
 require __DIR__ . '/auth-admin.php';
