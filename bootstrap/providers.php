@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Pagination\Paginator;
+// use Illuminate\Pagination\Paginator;
 
 return [
     App\Providers\AppServiceProvider::class,
 
     // Pagination
-    Paginator::useBootstrap(),
+    // Paginator::useBootstrap(),
 
     Barryvdh\Debugbar\ServiceProvider::class,
 ];

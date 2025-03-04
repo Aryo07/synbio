@@ -7,9 +7,9 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class HomePageController extends Controller
 {
-    public function home()
+    public function index()
     {
         // Menampilkan banner dengan status show dan position banner 1 dan 2 serta melimit banner di posisi 1 dan 2 hanya menampilkan 1 banner per posisi
         $banners = Banner::where('status', 'show')
