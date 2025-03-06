@@ -10,7 +10,13 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="{{ url('/') }}">Beranda</a>
                 <a class="nav-link" href="{{ route('products.page') }}">Produk</a>
-                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping text-success"></i></a>
+                
+                <a class="nav-link position-relative" href="{{ route('carts') }}"><i class="fa-solid fa-cart-shopping text-success"></i>
+                    <span class="bg-danger position-absolute cart-count" id="cart-count">
+                        0
+                    </span>
+                </a>
+
                 <div class="vr"></div>
                 <div class="nav-item dropdown ps-3">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

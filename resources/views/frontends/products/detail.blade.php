@@ -36,11 +36,12 @@
                             <p class="text-secondary">*maks {{ $max }} kg</p>
 
                             <!-- pilih jumlah -->
-                            <form action="#" class="d-flex">
-                                <input type="number" class="form-control" value="1" min="{{ $min }}" max="{{ $max }}" oninput="this.value = Math.max(this.min, Math.min(this.max, this.value))">
+                            <form action="{{ route('carts.add', $product->slug) }}" method="POST" class="d-flex">
+                                @csrf
+                                <input type="number" name="weight" class="form-control" value="1" min="{{ $min }}" max="{{ $max }}" oninput="this.value = Math.max(this.min, Math.min(this.max, this.value))">
                                 <h6 class="ps-2">kg</h6>
                                 <div class="vr ms-3 me-3"></div>
-                                <input type="submit" class="btn btn-success w-100" value="+ Keranjang">
+                                <button type="submit" class="btn btn-success w-100"><i class="fas fa-cart-plus me-2"></i> Keranjang</button>
                             </form>
                         </div>
                     </div>

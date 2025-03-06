@@ -65,7 +65,7 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="price">Harga</label>
+                                            <label for="price">Harga/kg</label>
                                             <input type="number" id="price" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}" placeholder="Tambah Harga">
 
                                             @error('price')

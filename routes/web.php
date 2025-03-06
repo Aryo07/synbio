@@ -10,6 +10,7 @@ use App\Http\Controllers\Backends\ProductController;
 use App\Http\Controllers\Backends\DashboardController;
 use App\Http\Controllers\Frontends\HomePageController;
 use App\Http\Controllers\Frontends\ProductPageController;
+use App\Http\Controllers\Frontends\CartController;
 
 Route::get('/', function () {
     return view('frontends.layouts.app');
@@ -29,6 +30,18 @@ Route::get('/products/detail/{product:slug}', [ProductPageController::class, 'sh
 Route::middleware('auth')->group(function () {
     Route::get('/home', action: [HomeController::class, 'home'])
         ->name('home');
+
+    // Cart Route
+    Route::get('/carts', action: [CartController::class, 'cart'])
+        ->name('carts');
+    Route::post('/carts/{slug}', action: [CartController::class, 'addCart'])
+        ->name('carts.add');
+    Route::get('/carts/count', action: [CartController::class, 'cartCount'])
+        ->name('carts.count');
+    Route::post('/carts/update/{id}', action: [CartController::class, 'updateCart'])
+        ->name('carts.update');
+    Route::post('/carts/delete/{id}', action: [CartController::class, 'deleteCart'])
+        ->name('carts.delete');
 });
 
 // Admin Route
