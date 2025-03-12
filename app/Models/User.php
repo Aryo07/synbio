@@ -52,4 +52,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class, 'user_id', 'id');
     }
+
+    // Relasi ke tabel Order
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
+
+    // Relasi ke tabel Payment
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'user_id', 'id');
+    }
 }

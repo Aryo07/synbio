@@ -14,13 +14,20 @@ class ProductPageController extends Controller
             request()->q,
             function ($products) {
                 $products = $products->where('title', 'like', '%' . request()->q . '%');
-            })->orderBy('id', 'desc')->paginate(10);
+            }
+        )->where('status', 'show')->orderBy('id', 'desc')->paginate(10);
         return view('frontends.products.index', compact('products'));
     }
 
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->first();
+
+        // cek apakah produk ada atau tidak ditemukan berdasarkan slug yang diinputkan user di URL browser
+        if (!$product) {
+            return view('frontends.errors.404');
+        }
+
         $products = Product::where('id', '!=', $product->id)->orderBy('id', 'desc')->paginate(4);
 
         // Definisikan jumlah minimal dan maksimal pembelian produk

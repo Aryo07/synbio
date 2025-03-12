@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="{{ asset('frontends/Assets/Logo.png') }}" alt="Logo"></a>
+        <a class="navbar-brand" href="#"><img src="{{ asset('frontends/assets/Logo.png') }}" alt="Logo"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,6 +23,7 @@
                         {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('orders') }}">Order</a></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar Akun</a></li>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

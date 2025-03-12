@@ -13,7 +13,8 @@
                         <h3>Keranjang</h3>
                     </div>
                 </div>
-                <form action="#">
+                <form method="POST" action="{{ route('checkout.process') }}">
+                    @csrf
                     <div class="row mt-3">
                         <div class="col-lg-8">
                             @foreach ($carts as $cart)

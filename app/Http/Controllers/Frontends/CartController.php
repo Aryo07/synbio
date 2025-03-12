@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontends;
 
-use App\Http\Controllers\Controller;
 use App\Models\Cart;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\OrderItem;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -46,7 +48,7 @@ class CartController extends Controller
             if ($cart->weight + $weight > $max) {
                 toastr()
                     ->positionClass('toast-top-center')
-                    ->error('Jumlah pembelian melebihi batas maksimal');
+                    ->error('Jumlah pembelian melebihi batas maksimal!');
                 return redirect()->route('products.detail', $product->slug);
             }
             $cart->weight += $weight;
@@ -58,7 +60,7 @@ class CartController extends Controller
             if ($weight > $max) {
                 toastr()
                     ->positionClass('toast-top-center')
-                    ->error('Jumlah pembelian melebihi batas maksimal');
+                    ->error('Jumlah pembelian melebihi batas maksimal!');
                 return redirect()->route('products.detail', $product->slug);
             }
             Cart::create([
@@ -77,6 +79,11 @@ class CartController extends Controller
 
     public function cartCount()
     {
+        // cek apakah request yang masuk adalah ajax atau bukan jika bukan ajax maka akan menampilkan halaman 404
+        if (!request()->ajax()) {
+            return view('frontends.errors.404');
+        }
+
         $carts = Cart::where('user_id', Auth::user()->id)->count();
         return response()->json(['count' => $carts]);
     }
@@ -94,7 +101,7 @@ class CartController extends Controller
         if ($weight > $max) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Jumlah pembelian melebihi batas maksimal',
+                'message' => 'Jumlah pembelian melebihi batas maksimal!',
             ], 400);
         }
 
@@ -105,20 +112,36 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Berhasil mengubah jumlah pembelian',
+            'message' => 'Berhasil mengubah jumlah pembelian!',
             'cart' => $cart,
         ]);
     }
 
-    public function deleteCart(Request $request, $id) 
+    public function deleteCart(Request $request, $id)
     {
         // Fungsi hapus keranjang belanja di halaman keranjang berdasarkan id keranjang
         $cart = Cart::where('user_id', Auth::user()->id)->where('id', $id)->firstOrFail();
         $cart->delete();
 
+        // Hapus order item yang tidak ada di cart
+        // OrderItem::where('product_id', $cart->product_id)->delete();
+
+        // Hapus order item yang tidak ada di cart dan hapus juga order jika order item tidak ada
+        $orderItem = OrderItem::where('product_id', $cart->product_id)->first();
+        if ($orderItem) {
+            $orderItem->delete();
+            $order = Order::where('id', $orderItem->order_id)->first();
+            if ($order) {
+                $remainingOrderItems = OrderItem::where('order_id', $order->id)->count();
+                if ($remainingOrderItems == 0) {
+                    $order->delete();
+                }
+            }
+        }
+
         return response()->json([
             'status' => 'success',
-            'message' => 'Berhasil menghapus produk dari keranjang',
+            'message' => 'Berhasil menghapus produk dari keranjang!',
         ]);
     }
 }

@@ -13,4 +13,10 @@ class Courier extends Model
         'service',
         'cost',
     ];
+
+    // Relasi ke tabel Order
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'courier_id', 'id');
+    }
 }
