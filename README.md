@@ -1,3 +1,23 @@
+1. git clone (url GitHub here)
+2. cd (nama project GitHub)
+3. composer install (composer update)
+4. cp .env.example .env
+5. code .
+6. php artisan key:generate --ansi
+   [
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=(sesuai nama project bebas)
+	DB_USERNAME=root
+	DB_PASSWORD=(opsional)
+   ]
+7. php artisan migrate
+8. php artisan migrate --seed / db:seed (opsional jika data dummy)
+9. php artisan storage:link (opsional jika tidak menggunakan crud image)
+10. php artisan serve
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
