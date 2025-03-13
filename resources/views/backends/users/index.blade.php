@@ -1,4 +1,4 @@
-@extends('backends.layouts.app', ['title' => 'Users'])
+@extends('backends.layouts.app', ['title' => 'Customers'])
 
 @section('content')
 <section class="section">
@@ -6,7 +6,7 @@
         <div class="col-12 col-md-12">
             <div class="card border-0 shadow">
                 <div class="card-header border-0 bg-primary text-white">
-                    <h4 class="card-title m-0 font-weight-bold"><i class="bi bi-person"></i> USER</h4>
+                    <h4 class="card-title m-0 font-weight-bold"><i class="bi bi-person"></i> CUSTOMER</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -47,7 +47,7 @@
                                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-warning">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            @if ($user->status != 'show')
+                                            @if ($user->carts->count() == 0 && $user->orders->count() == 0 && $user->payments->count() == 0)
                                             <button onclick="deleteData('{{ $user->id }}')" class="btn btn-sm btn-danger">
                                                 <i class="bi bi-trash"></i>
                                             </button>

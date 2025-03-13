@@ -8,7 +8,12 @@
             @if (Route::has('login'))
             @auth
             <div class="navbar-nav">
-                <a class="nav-link" aria-current="page" href="{{ url('/') }}">Beranda</a>
+                @if (Auth::guard('web')->check())
+                    <a class="nav-link" aria-current="page" href="{{ route('home') }}">Beranda</a>
+                @else
+                    <a class="nav-link" aria-current="page" href="{{ route('home.page') }}">Beranda</a>
+                @endif
+                
                 <a class="nav-link" href="{{ route('products.page') }}">Produk</a>
                 
                 <a class="nav-link position-relative" href="{{ route('carts') }}"><i class="fa-solid fa-cart-shopping text-success"></i>

@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">PENDING</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $pending }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                     <h6 class="text-muted font-semibold">SUCCESS</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $success }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -52,8 +52,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">EXPIRED</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <h6 class="text-muted font-semibold">PROCESS</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $process }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -64,13 +64,13 @@
                         <div class="card-body px-4 py-4-5">
                             <div class="row">
                                 <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon bg-danger mb-2">
-                                        <i class="iconly-boldClose-Square"></i>
+                                    <div class="stats-icon bg-info mb-2">
+                                        <i class="iconly-boldUser"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">FAILED</h6>
-                                    <h6 class="font-extrabold mb-0">0</h6>
+                                    <h6 class="text-muted font-semibold">CUSTOMER</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $customers }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -83,11 +83,12 @@
                 <div class="card-body py-4 px-4">
                     <div class="d-flex align-items-center">
                         <div class="avatar avatar-xl">
-                            <img src="{{ asset('backends/assets/compiled/jpg/1.jpg') }}" alt="Face 1">
-                        </div>
+                            {{-- <img src="{{ asset('backends/assets/compiled/jpg/1.jpg') }}" alt="Face 1"> --}}
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::guard('admin')->user()->name) }}" alt="Face 1">
+                            </div>
                         <div class="ms-3 name">
-                            <h5 class="font-bold">John Duck</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
+                            <h5 class="font-bold">{{ Auth::guard('admin')->user()->name }}</h5>
+                            <h6 class="text-muted mb-0">{{ Auth::guard('admin')->user()->email }}</h6>
                         </div>
                     </div>
                 </div>
@@ -108,7 +109,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">PENDAPATAN BULAN INI</h6>
-                                    <h6 class="font-extrabold mb-0">Rp. 0</h6>
+                                    <h6 class="font-extrabold mb-0">{{ moneyFormat($revenueMonth) }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -124,8 +125,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">PENDAPATAN BULAN INI</h6>
-                                    <h6 class="font-extrabold mb-0">Rp. 0</h6>
+                                    <h6 class="text-muted font-semibold">PENDAPATAN TAHUN INI</h6>
+                                    <h6 class="font-extrabold mb-0">{{ moneyFormat($revenueYear) }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -141,8 +142,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">PENDAPATAN BULAN INI</h6>
-                                    <h6 class="font-extrabold mb-0">Rp. 0</h6>
+                                    <h6 class="text-muted font-semibold">SEMUA PENDAPATAN</h6>
+                                    <h6 class="font-extrabold mb-0">{{ moneyFormat($revenueAll) }}</h6>
                                 </div>
                             </div>
                         </div>

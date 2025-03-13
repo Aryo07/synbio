@@ -55,7 +55,7 @@
                                             <a href="{{ route('admin.banks.edit', $bank->id) }}" class="btn btn-sm btn-warning">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            @if ($bank->status != 'show')
+                                            @if ($bank->orders->count() == 0)
                                             <button onclick="deleteData('{{ $bank->id }}')" class="btn btn-sm btn-danger">
                                                 <i class="bi bi-trash"></i>
                                             </button>

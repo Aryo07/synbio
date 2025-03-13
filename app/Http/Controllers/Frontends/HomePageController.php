@@ -30,6 +30,7 @@ class HomePageController extends Controller
         // tampilkan product yang paling banyak di order berdasarkan product_id, order_id pada table order_items
         $productsOrders = Product::select('products.*')
             ->join('order_items', 'products.id', '=', 'order_items.product_id')
+            ->where('products.status', 'show')
             ->groupBy('products.id')
             ->orderByRaw('SUM(order_items.weight) DESC')
             // ->orderByRaw('COUNT(order_items.product_id) DESC')

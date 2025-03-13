@@ -65,7 +65,7 @@
                                             <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-warning">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            @if ($product->status != 'show')
+                                            @if ($product->status != 'show' && $product->orderItems->count() == 0 && $product->carts->count() == 0)
                                             <button onclick="deleteData('{{ $product->id }}')" class="btn btn-sm btn-danger">
                                                 <i class="bi bi-trash"></i>
                                             </button>

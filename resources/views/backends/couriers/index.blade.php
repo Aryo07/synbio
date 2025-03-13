@@ -47,7 +47,7 @@
                                             <a href="{{ route('admin.couriers.edit', $courier->id) }}" class="btn btn-sm btn-warning">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            @if ($courier->status != 'show')
+                                            @if ($courier->orders->count() == 0)
                                             <button onclick="deleteData('{{ $courier->id }}')" class="btn btn-sm btn-danger">
                                                 <i class="bi bi-trash"></i>
                                             </button>

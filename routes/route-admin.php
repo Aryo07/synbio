@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backends\BankController;
 use App\Http\Controllers\Backends\UserController;
-use App\Http\Controllers\Backends\CourierController;
-use App\Http\Controllers\Backends\DashboardController;
 use App\Http\Controllers\Backends\BannerController;
+use App\Http\Controllers\Backends\CourierController;
 use App\Http\Controllers\Backends\ProductController;
+use App\Http\Controllers\Frontends\InvoiceController;
+use App\Http\Controllers\Backends\DashboardController;
+use App\Http\Controllers\Backends\OrderPageController;
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/dashboard', action: [DashboardController::class, 'dashboard'])
@@ -81,16 +83,24 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // User Route
     // Route::resource('users', UserController::class);
     // Route::resource('users', UserController::class)->except(['show']);
-    Route::get('/users', action: [UserController::class, 'index'])
+    Route::get('/customers', action: [UserController::class, 'index'])
         ->name('admin.users.index');
-    Route::get('/users/create', action: [UserController::class, 'create'])
+    Route::get('/customers/create', action: [UserController::class, 'create'])
         ->name('admin.users.create');
-    Route::post('/users', action: [UserController::class, 'store'])
+    Route::post('/customers', action: [UserController::class, 'store'])
         ->name('admin.users.store');
-    Route::get('/users/{user}/edit', action: [UserController::class, 'edit'])
+    Route::get('/customers/{user}/edit', action: [UserController::class, 'edit'])
         ->name('admin.users.edit');
-    Route::put('/users/{user}', action: [UserController::class, 'update'])
+    Route::put('/customers/{user}', action: [UserController::class, 'update'])
         ->name('admin.users.update');
-    Route::delete('/users/{user}', action: [UserController::class, 'destroy'])
+    Route::delete('/customers/{user}', action: [UserController::class, 'destroy'])
         ->name('admin.users.destroy');
+
+    // Order Route
+    Route::get('/orders', [OrderPageController::class, 'index'])
+        ->name('admin.orders.index');
+
+    // Invoice Route
+    Route::get('/invoice/{orderId}/customer', [InvoiceController::class, 'index'])
+        ->name('customers.invoice');
 });

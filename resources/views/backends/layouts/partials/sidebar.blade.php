@@ -82,16 +82,22 @@
             <li class="sidebar-item {{ Route::is('admin.users*') ? 'active' : '' }} ">
                 <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
                     <i class="bi bi-person"></i>
-                    <span>User</span>
+                    <span>Customer</span>
                 </a>
 
 
             </li>
 
+            <li class="sidebar-item {{ Route::is('admin.orders*') ? 'active' : '' }} ">
+                <a href="{{ route('admin.orders.index') }}" class='sidebar-link'>
+                    <i class="bi bi-box-seam"></i>
+                    <span>Order</span>
+                </a>
 
 
+            </li>
 
-
+            
         </ul>
 
         <ul class="menu">
