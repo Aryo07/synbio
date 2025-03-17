@@ -63,7 +63,8 @@ class PaymentController extends Controller
             $image = $request->file('image');
             $image_name = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('storage/payments'), $image_name);
-            $payment->image = 'payments/' . $image_name;
+            // $payment->image = 'payments/' . $image_name;
+            $payment->image = $image_name;
             $payment->save();
         }
 

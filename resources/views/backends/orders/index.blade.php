@@ -26,6 +26,7 @@
                                 <thead>
                                     <tr>
                                         <th>NO.</th>
+                                        <th>Bukti Pembayaran</th>
                                         <th>No. INOVICE</th>
                                         <th>CUSTOMER</th>
                                         <th>TOTAL BIAYA</th>
@@ -37,8 +38,16 @@
                                     @forelse ($orders as $order)
                                     <tr>
                                         <td>{{ $loop->iteration + $orders->perPage() * ($orders->currentPage() - 1) }}</td>
+                                        <td>
+                                            @if ($order->payment->image)
+                                                <a href="{{ asset('storage/payments/' . $order->payment->image) }}" target="_blank">{{ $order->payment->image }}</a>
+                                            @else
+                                                <p>Bukti Pembayaran Belum Tersedia</p>
+                                            @endif
+                                        </td>
                                         <td>{{ $order->invoice_number }}</td>
                                         <td>{{ $order->user->name }}</td>
+                                        {{-- <td>{{ optional($order->user)->name }}</td> --}}
                                         <td>{{ moneyFormat($order->total_price) }}</td>
                                         <td>
                                             @if ($order->status == 'PENDING')
