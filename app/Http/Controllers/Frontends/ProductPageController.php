@@ -28,7 +28,10 @@ class ProductPageController extends Controller
             return view('frontends.errors.404');
         }
 
-        $products = Product::where('id', '!=', $product->id)->orderBy('id', 'desc')->paginate(4);
+        $products = Product::where('id', '!=', $product->id)
+            ->where('status', 'show')
+            ->orderBy('id', 'desc')
+            ->paginate(4);
 
         // Definisikan jumlah minimal dan maksimal pembelian produk
         $min = 1;

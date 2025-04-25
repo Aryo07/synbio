@@ -99,6 +99,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     // Order Route
     Route::get('/orders', [OrderPageController::class, 'index'])
         ->name('admin.orders.index');
+    Route::post('/orders/{orderId}/success', [OrderPageController::class, 'create'])
+        ->name('admin.orders.success');
 
     // Invoice Route
     Route::get('/invoice/{orderId}/customer', [InvoiceController::class, 'index'])

@@ -68,18 +68,20 @@ class PaymentController extends Controller
             $payment->save();
         }
 
-        // update status order menjadi success
-        $order = Order::findOrFail($payment->order_id);
-        $order->status = 'success';
-        $order->save();
+        // // update status order menjadi success
+        // $order = Order::findOrFail($payment->order_id);
+        // $order->status = 'success';
+        // $order->save();
 
         toastr()
             ->positionClass('toast-top-center')
-            ->success('Bukti pembayaran berhasil diupload');
+            ->success('Bukti pembayaran berhasil diupload, Menunggu konfirmasi dari admin!');
 
-        // Set session flag payment_success ke true
-        session(['payment_success' => true]);
+        // // Set session flag payment_success ke true
+        // session(['payment_success' => true]);
 
-        return redirect()->route('payment.success');
+        // return redirect()->route('payment.success');
+
+        return redirect()->route('orders');
     }
 }

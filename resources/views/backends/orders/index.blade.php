@@ -64,7 +64,10 @@
                                                     <i class="bi bi-file-earmark-text"></i>
                                                 </a>
                                             @else
-                                                <p>-</p>
+                                                <form action="{{ route('admin.orders.success', ['orderId' => $order->id]) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-success">Transaksi Sukses</button>
+                                                </form>
                                             @endif
                                         </td>
                                     </tr>

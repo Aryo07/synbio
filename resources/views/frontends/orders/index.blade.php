@@ -64,14 +64,17 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($order->status == 'PENDING')
-                                                        <a href="{{ route('payment.index', $order->id) }}" class="btn btn-warning btn-sm w-50">
-                                                            <i class="fas fa-credit-card"></i> Bayar
-                                                        </a>
-                                                    @elseif ($order->status == 'SUCCESS')
+                                                    @if ($order->status == 'SUCCESS')
                                                         <a href="{{ route('invoice', ['orderId' => $order->id]) }}" class="btn btn-success btn-sm w-50" target="_blank">
                                                             <i class="fas fa-file-invoice"></i> Invoice
                                                         </a>
+                                                    @elseif ($order->status == 'PENDING' && $order->payment && $order->payment->image == null)
+                                                        <a href="{{ route('payment.index', $order->id) }}" class="btn btn-warning btn-sm w-50">
+                                                            <i class="fas fa-credit-card"></i> Bayar
+                                                        </a>
+                                                    @elseif ($order->status == 'PENDING' && $order->payment && $order->payment->image != null)
+                                                        <!-- Hidden button for 'Bayar' -->
+                                                        -
                                                     @else
                                                         <a href="{{ route('orders.detail', ['orderId' => $order->id]) }}" class="btn btn-secondary btn-sm w-50">
                                                             <i class="fas fa-info-circle"></i> Checkout

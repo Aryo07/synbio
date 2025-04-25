@@ -37,7 +37,7 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
+            'driver' => 'session', // fungsi session untuk menyimpan data user yang login ke dalam session dan cookie/cache browser
             'provider' => 'users',
         ],
 

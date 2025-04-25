@@ -30,16 +30,28 @@
 
 /* hero */
 #hero {
-    background-image: url(./Assets/Gambar1.jpg);
+    /* background-image: url(./Assets/Gambar1.jpg); */
     background-size: cover;
     height: 600px;
     color: white;
     display: flex;
     align-items: center;
+    justify-content: center; /* Tambahkan ini untuk memastikan konten berada di tengah secara vertikal */
+    flex-direction: column;
+}
+
+#hero .konten-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #hero .konten-hero h1 {
     font-size: 60px;
+}
+
+#hero .konten-hero .btn {
+    align-self: flex-start; /* Tambahkan ini untuk memposisikan tombol di sebelah kiri */
 }
 
 /* hero */
@@ -77,7 +89,7 @@
 }
 
 #cta .bg-cta {
-    background-image: url(./Assets/Banner.jpg);
+    /* background-image: url(./Assets/Banner.jpg); */
     background-size: cover;
     height: 500px;
     border-radius: 20px;
