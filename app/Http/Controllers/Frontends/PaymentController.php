@@ -74,7 +74,6 @@ class PaymentController extends Controller
         // $order->save();
 
         toastr()
-            ->positionClass('toast-top-center')
             ->success('Bukti pembayaran berhasil diupload, Menunggu konfirmasi dari admin!');
 
         // // Set session flag payment_success ke true

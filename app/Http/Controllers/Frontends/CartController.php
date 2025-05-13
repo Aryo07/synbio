@@ -47,7 +47,6 @@ class CartController extends Controller
             // Cek jika jumlah pembelian lebih dari 5 di detail product
             if ($cart->weight + $weight > $max) {
                 toastr()
-                    ->positionClass('toast-top-center')
                     ->error('Jumlah pembelian melebihi batas maksimal!');
                 return redirect()->route('products.detail', $product->slug);
             }
@@ -59,7 +58,6 @@ class CartController extends Controller
             // Cek jika jumlah pembelian lebih dari 5 di keranjang
             if ($weight > $max) {
                 toastr()
-                    ->positionClass('toast-top-center')
                     ->error('Jumlah pembelian melebihi batas maksimal!');
                 return redirect()->route('products.detail', $product->slug);
             }
@@ -72,7 +70,6 @@ class CartController extends Controller
         }
 
         toastr()
-            ->positionClass('toast-top-center')
             ->success('Produk berhasil ditambahkan ke keranjang');
         return redirect()->route('products.detail', $product->slug);
     }

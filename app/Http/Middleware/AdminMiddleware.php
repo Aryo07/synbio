@@ -18,7 +18,6 @@ class AdminMiddleware
     {
         if(!Auth::guard('admin')->check()) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Silahkan login terlebih dahulu!');
             return redirect()->route('admin.login');
         }

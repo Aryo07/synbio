@@ -73,13 +73,11 @@ class BankController extends Controller
 
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data Bank berhasil ditambahkan');
 
             return redirect()->route('admin.banks.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data Bank gagal ditambahkan');
 
             return redirect()->route('admin.banks.index');
@@ -157,12 +155,10 @@ class BankController extends Controller
 
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data bank berhasil diubah!');
             return redirect()->route('admin.banks.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data bank gagal diubah!');
             return redirect()->route('admin.banks.edit', $bank->id);
         }
@@ -181,12 +177,10 @@ class BankController extends Controller
 
         if ($bank) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data bank berhasil dihapus!');
             return redirect()->route('admin.banks.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data bank gagal dihapus!');
             return redirect()->route('admin.banks.index');
         }

@@ -87,12 +87,10 @@ class BannerController extends Controller
 
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data banner berhasil ditambahkan!');
             return redirect()->route('admin.banners.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data banner gagal ditambahkan!');
             return redirect()->route('admin.banners.create');
         }
@@ -185,12 +183,10 @@ class BannerController extends Controller
 
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data banner berhasil diubah!');
             return redirect()->route('admin.banners.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data banner gagal diubah!');
             return redirect()->route('admin.banners.edit', $banner->id);
         }
@@ -209,12 +205,10 @@ class BannerController extends Controller
 
         if ($banner) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data banner berhasil dihapus!');
             return redirect()->route('admin.banners.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data banner gagal dihapus!');
             return redirect()->route('admin.banners.index');
         }

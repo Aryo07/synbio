@@ -50,19 +50,16 @@ class AuthController extends Controller
             }
 
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Login berhasil!');
 
             return redirect()->route('home');
         } else {
             if (!$user) {
                 toastr()
-                    ->positionClass('toast-top-center')
                     ->error('Email tidak terdaftar!');
                 return redirect()->back();
             } else {
                 toastr()
-                    ->positionClass('toast-top-center')
                     ->error('Password tidak valid!');
                 return redirect()->back();
             }
@@ -105,12 +102,10 @@ class AuthController extends Controller
         if ($user) {
             Auth::guard('web')->login($user);
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Registrasi berhasil! Silahkan login.');
             return redirect()->route('login');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Registrasi gagal! Silahkan coba lagi.');
             return redirect()->back();
         }
@@ -149,13 +144,11 @@ class AuthController extends Controller
             });
 
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Email reset password berhasil dikirim! Silahkan cek email Anda.');
             return redirect()->route('login');
         }
 
         toastr()
-            ->positionClass('toast-top-center')
             ->error('Email tidak terdaftar!');
         return redirect()->back();
     }
@@ -199,12 +192,10 @@ class AuthController extends Controller
 
         if ($status == Password::PASSWORD_RESET) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Password berhasil diatur ulang! Silahkan login.');
             return redirect()->route('login');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Token tidak valid atau sudah expired!');
             return redirect()->back();
         }
@@ -217,7 +208,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         toastr()
-            ->positionClass('toast-top-center')
             ->success('Logout berhasil!');
 
         return redirect('/');

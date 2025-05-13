@@ -19,7 +19,6 @@ class CheckoutController extends Controller
         // Jika cart item kosong, redirect kembali ke halaman cart dengan pesan error
         if ($carts->isEmpty()) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Keranjang belanja masih kosong, silahkan tambahkan produk terlebih dahulu!');
             return redirect()->route('carts');
         }
@@ -73,7 +72,6 @@ class CheckoutController extends Controller
 
         // Redirect ke halaman order dengan pesan sukses
         toastr()
-            ->positionClass('toast-top-center')
             ->success('Berhasil checkout, silahkan lengkapi data pengiriman dan pembayaran!');
         // return redirect()->route('orders');
         return redirect()->route('orders.detail', ['orderId' => $order->id]);

@@ -66,12 +66,10 @@ class UserController extends Controller
 
         if ($user) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data user berhasil disimpan.');
             return redirect()->route('admin.users.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data user gagal disimpan.');
             return redirect()->route('admin.users.index');
         }
@@ -133,12 +131,10 @@ class UserController extends Controller
 
         if ($user) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data user berhasil diupdate.');
             return redirect()->route('admin.users.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data user gagal diupdate.');
             return redirect()->route('admin.users.index');
         }
@@ -152,12 +148,10 @@ class UserController extends Controller
         $user->delete();
         if ($user) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data user berhasil dihapus.');
             return redirect()->route('admin.users.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data user gagal dihapus.');
             return redirect()->route('admin.users.index');
         }

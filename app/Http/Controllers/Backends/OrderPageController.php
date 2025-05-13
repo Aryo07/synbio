@@ -30,7 +30,6 @@ class OrderPageController extends Controller
         $order->save();
 
         toastr()
-            ->positionClass('toast-top-center')
             ->success('Order berhasil diubah menjadi success');
         return redirect()->route('admin.orders.index');
     }

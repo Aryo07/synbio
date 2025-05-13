@@ -62,13 +62,11 @@ class CourierController extends Controller
 
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data Courier berhasil ditambahkan');
 
             return redirect()->route('admin.couriers.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data Courier gagal ditambahkan');
 
             return redirect()->route('admin.couriers.index');
@@ -120,13 +118,11 @@ class CourierController extends Controller
         // fungsi jika data berhasil diupdate dan gagal diupdate
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data Courier berhasil diubah');
 
             return redirect()->route('admin.couriers.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data Courier gagal diubah');
 
             return redirect()->route('admin.couriers.index');
@@ -142,13 +138,11 @@ class CourierController extends Controller
 
         if ($courier) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data Courier berhasil dihapus');
 
             return redirect()->route('admin.couriers.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data Courier gagal dihapus');
 
             return redirect()->route('admin.couriers.index');

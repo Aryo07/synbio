@@ -96,7 +96,6 @@ class OrderController extends Controller
         Cart::where('user_id', Auth::user()->id)->delete();
 
         toastr()
-            ->positionClass('toast-top-center')
             ->success('Pesanan berhasil dibuat, silahkan lanjutkan ke proses pembayaran!');
         return redirect()->route('payment.process', $order->id);
     }

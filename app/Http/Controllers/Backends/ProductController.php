@@ -85,12 +85,10 @@ class ProductController extends Controller
 
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data product berhasil ditambahkan!');
             return redirect()->route('admin.products.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data product gagal ditambahkan!');
             return redirect()->route('admin.products.create');
         }
@@ -180,12 +178,10 @@ class ProductController extends Controller
 
         if ($request) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data product berhasil diubah!');
             return redirect()->route('admin.products.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data product gagal diubah!');
             return redirect()->route('admin.products.edit', $product->id);
         }
@@ -204,12 +200,10 @@ class ProductController extends Controller
 
         if ($product) {
             toastr()
-                ->positionClass('toast-top-center')
                 ->success('Data product berhasil dihapus!');
             return redirect()->route('admin.products.index');
         } else {
             toastr()
-                ->positionClass('toast-top-center')
                 ->error('Data product gagal dihapus!');
             return redirect()->route('admin.products.index');
         }
