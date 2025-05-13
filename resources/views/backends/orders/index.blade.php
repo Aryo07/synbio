@@ -39,21 +39,27 @@
                                     <tr>
                                         <td>{{ $loop->iteration + $orders->perPage() * ($orders->currentPage() - 1) }}</td>
                                         <td>
-                                            @if ($order->payment->image)
+                                            @if ($order->payment && $order->payment->image)
                                                 <a href="{{ asset('storage/payments/' . $order->payment->image) }}" target="_blank">{{ $order->payment->image }}</a>
                                             @else
-                                                <p>Bukti Pembayaran Belum Tersedia</p>
+                                                <span class="text-danger">Bukti Pembayaran Belum Tersedia</span>
                                             @endif
                                         </td>
-                                        <td>{{ $order->invoice_number }}</td>
+                                        <td>
+                                            @if ($order->invoice_number)
+                                                {{ $order->invoice_number }}
+                                            @else
+                                                <span class="text-danger">Nomor Invoice Belum Tersedia</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $order->user->name }}</td>
                                         {{-- <td>{{ optional($order->user)->name }}</td> --}}
                                         <td>{{ moneyFormat($order->total_price) }}</td>
                                         <td>
-                                            @if ($order->status == 'PENDING')
-                                                <span class="badge bg-warning">{{ $order->status }}</span>
-                                            @elseif ($order->status == 'SUCCESS')
+                                            @if ($order->status == 'SUCCESS')
                                                 <span class="badge bg-success">{{ $order->status }}</span>
+                                            @elseif ($order->status == 'PENDING')
+                                                <span class="badge bg-warning">{{ $order->status }}</span>
                                             @else
                                                 <span class="badge bg-secondary">{{ $order->status }}</span>
                                             @endif
@@ -64,10 +70,14 @@
                                                     <i class="bi bi-file-earmark-text"></i>
                                                 </a>
                                             @else
-                                                <form action="{{ route('admin.orders.success', ['orderId' => $order->id]) }}" method="POST" style="display:inline;">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-sm btn-success">Transaksi Sukses</button>
-                                                </form>
+                                                @if ($order->status != 'PROCESS')
+                                                    <form action="{{ route('admin.orders.success', ['orderId' => $order->id]) }}" method="POST" style="display:inline;">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-sm btn-success">Transaksi Sukses</button>
+                                                    </form>
+                                                @else
+                                                    <span class="text-muted">Menunggu Transaksi</span>
+                                                @endif
                                             @endif
                                         </td>
                                     </tr>

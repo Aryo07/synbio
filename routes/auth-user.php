@@ -19,12 +19,12 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/reset-password/{token}', [AuthController::class, 'reset_password'])
         ->name('reset-password');
-        
+
     Route::post('/reset-password', [AuthController::class, 'reset_password_post'])
         ->name('reset-password.update');
 });
 
-Route::middleware('auth')->group(callback: function () {
+Route::middleware('auth')->group(function () {
     Route::match(['get', 'post'], '/logout', [AuthController::class, 'logout'])
     ->name('logout');
 });
